@@ -8,11 +8,12 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.padrao.constantes.CarroConst;
 import com.padrao.model.Carro;
 
 public class TestCarroBuilder {
 
-	Map<String, Object> mapa;
+	Map<CarroConst, Object> mapa;
 	CarroBuilder builder;
 	
 	@Before
@@ -22,10 +23,10 @@ public class TestCarroBuilder {
 	}
 
 	@Test
-	public void testePessoaReal() {
+	public void testeCarroReal() {
 		//prepara
-		mapa.put(Carro.ANO, 2010);
-		mapa.put(Carro.COR, "Vermelho");
+		mapa.put(CarroConst.ANO, 2010);
+		mapa.put(CarroConst.COR, "Vermelho");
 		
 		//executa
 		Carro carro = builder.carregar(mapa).build();
@@ -35,18 +36,5 @@ public class TestCarroBuilder {
 		assertEquals(new Integer(2010), carro.getAno());
 	}
 	
-	@Test
-	public void testeValorErrado() {
-		//prepara
-		mapa.put("qualquercoisa", "blabla");
-		mapa.put("outracoisa", 20);
-		
-		//executa
-		Carro carro = builder.carregar(mapa).build();
-
-		//valida
-		assertEquals("", carro.getCor());
-		assertEquals(new Integer(0), carro.getAno());
-	}
 
 }

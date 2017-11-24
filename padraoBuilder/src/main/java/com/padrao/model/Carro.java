@@ -1,9 +1,6 @@
 package com.padrao.model;
 
 public class Carro {
-
-	public static final String ANO = "CARRO_ANO";
-	public static final String COR = "CARRO_COR";
 	
 	private String cor;
 	private Integer ano;

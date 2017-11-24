@@ -1,9 +1,6 @@
 package com.padrao.model;
 
-public class Pessoa {
-	
-	public static final String NOME = "PESSOA_NOME";
-	public static final String IDADE = "PESSOA_IDADE";
+public class Pessoa {	
 
 	private String nome;
 	private Integer idade;

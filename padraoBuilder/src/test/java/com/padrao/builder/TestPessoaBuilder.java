@@ -8,45 +8,33 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.padrao.model.Carro;
+import com.padrao.constantes.PessoaConst;
+import com.padrao.model.Pessoa;
 
 public class TestPessoaBuilder {
 
-	Map<String, Object> mapa;
-	CarroBuilder builder;
+	Map<PessoaConst, Object> mapa;
+	PessoaBuilder builder;
 	
 	@Before
 	public void iniciar() {
 		mapa = new HashMap<>();
-		builder = new CarroBuilder();
+		builder = new PessoaBuilder();
 	}
 
 	@Test
 	public void testePessoaReal() {
 		//prepara
-		mapa.put(Carro.ANO, 2010);
-		mapa.put(Carro.COR, "Vermelho");
+		mapa.put(PessoaConst.NOME, "Fulano");
+		mapa.put(PessoaConst.IDADE, 20);
 		
 		//executa
-		Carro carro = builder.carregar(mapa).build();
+		Pessoa pessoa = builder.carregar(mapa).build();
 		
 		//valida
-		assertEquals("Vermelho", carro.getCor());
-		assertEquals(new Integer(2010), carro.getAno());
+		assertEquals("Fulano", pessoa.getNome());
+		assertEquals(new Integer(20), pessoa.getIdade());
 	}
 	
-	@Test
-	public void testeValorErrado() {
-		//prepara
-		mapa.put("qualquercoisa", "blabla");
-		mapa.put("outracoisa", 20);
-		
-		//executa
-		Carro carro = builder.carregar(mapa).build();
-
-		//valida
-		assertEquals("", carro.getCor());
-		assertEquals(new Integer(0), carro.getAno());
-	}
 
 }
